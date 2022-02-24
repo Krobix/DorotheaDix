@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <style>
     @font-face {
         font-family: montserrat;
@@ -22,11 +23,53 @@
         text-align: center;
         display: none;
     }
+
+    /* CSS */
+    .button-9 {
+        appearance: button;
+        backface-visibility: hidden;
+        background-color: #405cf5;
+        border-radius: 6px;
+        border-width: 0;
+        box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+        box-sizing: border-box;
+        color: #fff;
+        cursor: pointer;
+        font-family: montserrat;
+        font-size: 100%;
+        height: 44px;
+        line-height: 1.15;
+        margin: 12px 0 0;
+        outline: none;
+        overflow: hidden;
+        padding: 0 25px;
+        position: relative;
+        text-align: center;
+        text-transform: none;
+        transform: translateZ(0);
+        transition: all .2s,box-shadow .08s ease-in;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        width: 16.6%;
+    }
+
+    .button-9:disabled {
+        cursor: default;
+    }
+
+    .button-9:focus {
+        box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+    }
+
+    #pageselect {
+        height: 20%;
+    }
 </style>
 
 <h1>Dorothea Dix</h1>
 
-<!--Timeline Placeholder-->
+<div id="pageselect"></div>
 
 <div id="bio-intro" class="biosection">Dorothea Dix was an extremely significant reformer in the 1800’s. Although in her early years she would work as a teacher, she would eventually move on from this profession and begin her career as a reformer, specifically of prisons and asylums, where she would advocate for better living conditions for criminals as well as the mentally ill. Although her reforms were rejected and disliked by most government officials of her time, she never gave up on the core ideas of her cause, and her ideas would come to be embraced by many down the line.</div>
 
@@ -42,9 +85,22 @@
     During this same year, Dorothea’s physician suggested that she visit Europe. She did so with some friends, and while in Europe she met several activists who in particular advocated for more humane prisons. This sparked Dorothea’s interest in the subject, a subject which she planned to pursue when she arrived home. This would begin with her taking tours of prisons across the States after arriving home.
 </div>
 
+<div id="bio-prisontour" class="biosection">
+    placeholder prisontour
+</div>
+
+<div id="bio-civilwar" class="biosection">
+    placeholder civilwar
+</div>
+
+<div id="bio-laterlife" class="biosection">
+    placeholder laterlife
+</div>
 
 <script>
-    var bioSections = ["bio-intro", "bio-earlylife", "bio-endteach"];
+    var bioSections = ["bio-intro", "bio-earlylife", "bio-endteach", "bio-prisontour", "bio-civilwar", "bio-laterlife"];
+    var bioTitles = ["Introduction", "Early Life", "End of teaching career and beginning of political career", "Prison Tours and Political Lobbying", "Civil War", "Later life"];
+
 
     function showBioSection(sect){
         for(var i=0; i<bioSections.length; i++){
@@ -55,5 +111,22 @@
         e.style.display = "initial";
     }
 
+    function addButtons(){
+        var d = document.getElementById("pageselect");
+        for(var i=0; i<bioSections.length; i++){
+            var t = document.createElement("button");
+            console.log(bioSections[i]);
+            t.className = "button-9";
+            t.id = bioSections[i] + "-b";
+            t.onclick = function(evt){
+                console.log(evt.target.getAttribute("id").slice(0,-2));
+                showBioSection(evt.target.getAttribute("id").slice(0, -2));
+            }
+            t.innerHTML = bioTitles[i];
+            d.appendChild(t);
+        }
+    }
+
     showBioSection("bio-intro");
+    addButtons();
 </script>
