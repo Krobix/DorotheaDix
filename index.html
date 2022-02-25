@@ -20,7 +20,7 @@
     }
 
     .biosection {
-        text-align: center;
+        text-align: left;
         display: none;
     }
 
@@ -65,6 +65,12 @@
     #pageselect {
         height: 20%;
     }
+
+    #display-img {
+        text-align: right;
+        width: 20%;
+        height: auto;
+    }
 </style>
 
 <div id="header">
@@ -74,6 +80,11 @@
 </div>
 
 <div id="bodyd">
+    <figure>
+        <img id="display-img">
+        <figcaption id="img-capt">PLACEHOLDER CAPTION</figcaption>
+    </figure>
+
     <div id="bio-intro" class="biosection">Dorothea Dix was an extremely significant reformer in the 1800’s. Although in her early years she would work as a teacher, she would eventually move on from this profession and begin her career as a reformer, specifically of prisons and asylums, where she would advocate for better living conditions for criminals as well as the mentally ill. Although her reforms were rejected and disliked by most government officials of her time, she never gave up on the core ideas of her cause, and her ideas would come to be embraced by many down the line.</div>
 
     <div id="bio-earlylife" class="biosection">
@@ -105,7 +116,34 @@
 <script>
     var bioSections = ["bio-intro", "bio-earlylife", "bio-endteach", "bio-prisontour", "bio-civilwar", "bio-laterlife"];
     var bioTitles = ["Introduction", "Early Life", "End of teaching career and beginning of political career", "Prison Tours and Political Lobbying", "Civil War", "Later life"];
+    var displayImages = [];
+    var currentImage = 0;
 
+    function addDisplayImg(src, desc){
+        var tmp = {"src": src, "desc":desc};
+        displayImages.push(tmp);
+    }
+
+    function displayImg(n){
+        var img = document.getElementById("display-img");
+        var d = document.getElementById("img-capt");
+        for(var i=20; i>=0; i++){
+            setTimeout(function(){img.style.opacity -= 0.05;}, 100);
+        }
+        img.src = displayImages[n].src;
+        d.innerHTML = displayImages[n].desc;
+        for(var i=20; i>=0; i++){
+            setTimeout(function(){img.style.opacity += 0.05;}, 100);
+        }
+    }
+
+    function imageCycle(){
+        if(currentImage>displayImages.length){
+            currentImage = 0;
+        }
+        displayImg(currentImage);
+        currentImage++;
+    }
 
     function showBioSection(sect){
         for(var i=0; i<bioSections.length; i++){
@@ -134,4 +172,11 @@
 
     showBioSection("bio-intro");
     addButtons();
+    
+    addDisplayImg("img/portrait0.jpg", "Portrait of Dorothea Dix");
+    addDiaplyImg("img/memorial0.jpg", "Memorial soliciting a state hospital for the mentally ill, inspired by Dorothea Dix");
+    addDisplayImg("img/hospitalnc.jpg", "Hospital name in honor of Dorothea Dix");
+    addDisplayImg("img/hospitalsign0.jpg", "Sign found outside Dorothea Dix hospital");
+    
+    setInterval(imageCycle, 10000);
 </script>
