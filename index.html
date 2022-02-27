@@ -38,7 +38,7 @@
         cursor: pointer;
         font-family: montserrat;
         font-size: 100%;
-        height: 44px;
+        height: 64px;
         line-height: 1.15;
         margin: 12px 0 0;
         outline: none;
@@ -52,7 +52,7 @@
         user-select: none;
         -webkit-user-select: none;
         touch-action: manipulation;
-        width: 16.6%;
+        width: 14.2%;
     }
 
     .button-9:disabled {
@@ -151,15 +151,22 @@
         <br/><br/>
         - Died in 1887 at the age of 85, in a hsopital that had been dedicated to her
     </div>
+
+    <div id="citations" class="biosection">
+        Prison cell image By Thesab - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=3186464 <br/>
+        Other sources:<br/>
+        https://www.womenshistory.org/education-resources/biographies/dorothea-dix <br/>
+        https://www.history.com/topics/womens-history/dorothea-lynde-dix <br/>
+    </div>
 </div>
 
 <img id="display-img" src="img/portrait0.jpeg">
 <p id="img-capt">Portrait of Dorothea Dix</p>
 
 <script>
-    var bioSections = ["bio-intro", "bio-earlylife", "bio-endteach", "bio-prisontour", "bio-civilwar", "bio-laterlife"];
-    var bioTitles = ["Introduction", "Early Life", "End of teaching career and beginning of political career", "Prison Tours and Political Lobbying", "Civil War", "Later life"];
-    var timelineImages = ["img/dordix_timeline_base.jpg", "img/dordix_timeline_early.jpg", "img/dordix_timeline_endteach.jpg", "img/dordix_timeline_activism.jpg", "img/dordix_timeline_later.jpg", "img/dordix_timeline_later.jpg"];
+    var bioSections = ["bio-intro", "bio-earlylife", "bio-endteach", "bio-prisontour", "bio-civilwar", "bio-laterlife", "citations"];
+    var bioTitles = ["Introduction", "Early Life", "End of teaching career and beginning of political career", "Prison Tours and Political Lobbying", "Civil War", "Later life", "Sources used"];
+    var timelineImages = ["img/dordix_timeline_base.jpg", "img/dordix_timeline_early.jpg", "img/dordix_timeline_endteach.jpg", "img/dordix_timeline_activism.jpg", "img/dordix_timeline_later.jpg", "img/dordix_timeline_later.jpg", "img/dordix_timeline_base.jpg"];
     var displayImages = [];
     var currentImage = 0;
 
@@ -216,6 +223,7 @@
     addButtons();
     
     addDisplayImg("img/portrait0.jpeg", "Portrait of Dorothea Dix");
+    addDisplayImg("img/cell1830.jpg", "A modern-day photograph of a cell in a Pennsylvania prison in the 1830's");
     addDisplayImg("img/memorial0.jpg", "Memorial soliciting a state hospital for the mentally ill, inspired by Dorothea Dix");
     addDisplayImg("img/hospitalnc.jpg", "Hospital named in honor of Dorothea Dix");
     addDisplayImg("img/hospitalsign0.jpg", "Sign found outside Dorothea Dix hospital");
