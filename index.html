@@ -71,6 +71,7 @@
         float: right;
         height: 50vh;
         width: auto;
+        padding-left: 0%;
     }
 
     #img-capt{
@@ -82,8 +83,12 @@
     #bodyd {
         width: 50%;
         height: 80%;
-        clear: none;
         float: left;
+    }
+
+    #timeline {
+        width: 100%;
+        height: 20vh;
     }
 </style>
 
@@ -93,8 +98,7 @@
     <div id="pageselect"></div>
 </div>
 
-<img id="display-img" src="img/portrait0.jpeg">
-<p id="img-capt">Portrait of Dorothea Dix</p>
+<img id="timeline" src="img/dordix_timeline_base.jpg">
 
 <br/><br/>
 <div id="bodyd">
@@ -149,10 +153,13 @@
     </div>
 </div>
 
+<img id="display-img" src="img/portrait0.jpeg">
+<p id="img-capt">Portrait of Dorothea Dix</p>
 
 <script>
     var bioSections = ["bio-intro", "bio-earlylife", "bio-endteach", "bio-prisontour", "bio-civilwar", "bio-laterlife"];
     var bioTitles = ["Introduction", "Early Life", "End of teaching career and beginning of political career", "Prison Tours and Political Lobbying", "Civil War", "Later life"];
+    var timelineImages = ["img/dordix_timeline_base.jpg", "img/dordix_timeline_early.jpg", "img/dordix_timeline_endteach.jpg", "img/dordix_timeline_activism.jpg", "img/dordix_timeline_later.jpg", "img/dordix_timeline_later.jpg"];
     var displayImages = [];
     var currentImage = 0;
 
@@ -185,6 +192,8 @@
         }
         var e = document.getElementById(sect);
         e.style.display = "initial";
+        var tl = document.getElementById("timeline");
+        tl.src = timelineImages[bioSections.indexOf(sect)];
     }
 
     function addButtons(){
